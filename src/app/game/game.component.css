@@ -1,0 +1,340 @@
+/* General styling */
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card Styling */
+.card {
+  background: #fff;
+  padding: 25px;
+  width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.hints {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.hints li {
+  font-size: 16px;
+  color: #555;
+  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+}
+
+/* Input Field and Button */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.guess-input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.guess-input:focus {
+  border-color: #4caf50;
+}
+
+.submit-btn {
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 6px;
+  float: right !important;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #45a049;
+}
+
+.button-wrapper{
+  padding: 15px 35px ;
+}
+
+.next-btn{
+  background: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.finish-btn{
+  background: #000;
+  color: #fff;
+  border: none;
+  margin-left: 5px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Error Message */
+.error {
+  background-color: #f1cdcd;
+  color: #d32f2f;
+  font-weight: bold;
+  margin-top: 15px;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.options-container {
+  margin-top: 15px;
+}
+
+.option-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+/* Option Labels - Removed Borders */
+.option-label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.3s;
+  width: 48%;
+  justify-content: flex-start;
+  background: transparent; /* No border */
+}
+
+.correct {
+  background: #4caf50 !important;
+  color: white;
+}
+
+.wrong {
+  background: #d32f2f !important;
+  color: white;
+}
+
+.success{
+  background-color: #c8f7c5;
+  color: #2e7d32; /* Darker green for contrast */
+  text-align: center;
+  font-size: 16px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.score-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.clue-wrapper{
+  width: 100%;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+}
+
+.clues-text{
+  text-align: left;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* ---------------------------------------------------------------------------- */
+
+/* General Styles */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  text-align: center;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header */
+header {
+  background: #16a085;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px;
+  margin-right: 10px;
+}
+
+.header-right span {
+  margin-left: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Game Container */
+.game-container {
+  width: 60%;
+  margin: 30px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.correct, .incorrect, .total {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+.correct {
+  background-color: #27ae60;
+  color: white;
+}
+
+.incorrect {
+  background-color: #c0392b;
+  color: white;
+}
+
+.total {
+  background-color: #ff9966;
+  color: white;
+}
+
+/* Game Card */
+.game-card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: black;
+}
+
+/* Clue Box */
+.clue-box {
+  background: #f0f8ff;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 5px solid #3498db;
+  text-align: left;
+  margin: 20px auto;
+  width: 80%;
+  transition: transform 0.3s ease-in-out;
+}
+
+.clue-box:hover {
+  transform: scale(1.02);
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows wrapping if needed */
+    justify-content: center; /* Centers the options */
+    gap: 15px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ecf0f1;
+  padding: 12px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.3s;
+  border: 1px solid #bdc3c7;
+}
+
+/* Ensuring the input stays inside the label */
+.option input {
+  margin-right: 8px;
+}
+
+.option:hover {
+  background: #bdc3c7;
+  transform: scale(1.05);
+}
+
+/* Submit Button */
+/* .submit-btn {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: bold;
+  box-shadow: 0px 4px 10px rgba(231, 76, 60, 0.3);
+}
+
+.submit-btn:hover {
+  background: #c0392b;
+  transform: scale(1.05);
+} */
+

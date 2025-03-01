@@ -1,0 +1,115 @@
+<div class="game-container">
+  <div class="card">
+    <ng-container *ngIf="isUserOnBorded">
+      <div class="scoreboard" >
+        <p class="correct">✅ Correct: <strong>{{gameScore?.correct || 0}}</strong></p>
+        <p class="incorrect">❌ Incorrect: <strong>{{gameScore?.inCorrect || 0}}</strong></p>
+        <p class="total" *ngIf="closeGame">🟰 Total: <strong>{{totalScore || 0}}</strong></p>
+      </div>
+      <ng-container *ngIf="!closeGame">
+      <h3 class="title">
+        🌍 <span>Guess the Destination!</span>
+      </h3>
+      <div class="clue-box"> 
+        <h3>🕵️ Clues</h3>
+        <span *ngFor="let clue of clues">
+          <p>🗝️ {{clue}}</p>
+        </span>
+        <!-- <ul class="hints" *ngFor="let clue of clues">
+          <li> 🗝️ {{clue}}</li>
+        </ul> -->
+      </div>
+      <!-- <div class="input-container">
+        <label *ngFor="let option of options" class="option-label">
+          <input 
+            type="radio" 
+            name="cityOption" 
+            [value]="option" 
+            [(ngModel)]="selectedOption"
+            class="radio-btn"
+          />
+          <span class="custom-radio" [class.selected]="selectedOption === option"></span>
+          {{ option }}
+        </label>
+      </div> -->
+      <div class="options-container">
+        <label class="option" *ngFor="let option of options">
+          <input 
+            type="radio" 
+            name="cityOption" 
+            [value]="option" 
+            [(ngModel)]="selectedOption"
+          /> {{option}}</label>
+      </div>
+      <div class="button-wrapper" *ngIf="!hideSubmitButton">
+        <button class="submit-btn" (click)="checkGuess()">Submit</button>
+      </div>
+      <!-- <form>
+    </form> -->
+      <div *ngIf="isCorrect === true" class="result success">
+        🎉 Congratulations! You guessed it right!
+        <p>🌟 Fun Fact: {{ funFact }}</p>
+        <p>🧐 Trivia: {{ trivia }}</p>
+      </div>
+      <div *ngIf="isCorrect === false" class="result">
+        <div class="error">
+          ❌ Oops! Wrong guess.
+        </div>
+        <div class="success">
+          <p>The correct answer is : <b>{{destination}}</b></p>
+          <p>🌟 Fun Fact: {{ funFact }}</p>
+          <p>🧐 Trivia: {{ trivia }}</p>
+
+        </div>
+      </div>
+      <div class="button-wrapper" *ngIf="enableNextButton">
+        <button class="next-btn" (click)="getNewDestination()">Next Challenge</button>
+        <button class="finish-btn" (click)="finishGame()">Finish</button>
+      </div>
+    </ng-container>
+    </ng-container>
+    <ng-container *ngIf="!isUserOnBorded && !closeGame">
+      <div>
+        <h2>Enter Your Name</h2>
+        <div>
+          <input type="text" [(ngModel)]="userName" class="guess-input">
+        </div>
+        <div>
+          <button class="submit-btn" (click)="onSubmitUserName()">Submit</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="closeGame">
+      <button class="next-btn" (click)="restartGame()">
+        Restart Game</button>
+    </ng-container>
+  </div>
+</div>
+
+
+<!-- <div class="game-container">
+  <div class="scoreboard">
+      <span class="correct">✅ Correct: 1</span>
+      <span class="incorrect">❌ Incorrect: 2</span>
+  </div>
+
+  <div class="game-card">
+      <h2>🌍 Guess the Destination!</h2>
+
+      <div class="clue-box">
+          <h3>🕵️ Clues</h3>
+          <p>🔑 A coastal city known for its picturesque hills and tram rides.</p>
+          <p>🏛️ Famous for its vibrant neighborhoods and historic architecture.</p>
+      </div>
+
+      <form>
+          <div class="options">
+              <label class="option"><input type="radio" name="city"> Lisbon</label>
+              <label class="option"><input type="radio" name="city"> Porto</label>
+              <label class="option"><input type="radio" name="city"> Faro</label>
+              <label class="option"><input type="radio" name="city"> Coimbra</label>
+          </div>
+          <button type="submit" class="submit-btn">🚀 Submit</button>
+      </form>
+  </div>
+</div> -->

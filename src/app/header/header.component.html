@@ -1,0 +1,16 @@
+<header class="app-header container">
+    <div class="logo">
+      <img src="assets/logo.svg" alt="App Logo" />
+      <span class="app-title">Globetrotter </span>
+    </div>
+    
+    <div class="user-info" *ngIf="isEnableUserName">
+        <span class="switch-user" (click)="inviteUser()">
+           <img class="invite-img" src="assets/whatsapp.svg" height="22" alt="">
+            Invite</span>   
+        <span class="switch-user" (click)="switchUser()">Switch</span>   
+        <span class="user-name">Welcome, {{userName || 'John Doe'}}</span>
+    </div>
+</header>
+
+  

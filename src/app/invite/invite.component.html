@@ -1,0 +1,15 @@
+<div class="invite-container">
+    <div class="card">
+        <div>
+            <h2>Enter Your Friend Name</h2>
+            <input type="text" [(ngModel)]="userName" class="invite-form">
+            <h2>Contact</h2>
+            <input type="number" [(ngModel)]="contactNumber" class="invite-form">
+            <h2>Message</h2>
+            <textarea type="text-area" [(ngModel)]="message" class="invite-form"></textarea>
+        </div>
+        <div class="button-wrapper">
+            <button class="submit-btn" (click)="onSubmitInviteForm()">Invite</button>
+        </div>
+    </div>
+</div>
