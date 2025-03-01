@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TravelService } from 'src/service/travel.service';
 
 @Component({
@@ -24,14 +25,28 @@ export class GameComponent implements OnInit {
   correctCount:any = 0
   inCorrectCount:any = 0
   gameScore:any = {}
+  queryParams:any
 
-  constructor(private travelService: TravelService) {}
+  constructor(
+    private travelService: TravelService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    activatedRoute.queryParams.subscribe({
+      next:(res:any) => {
+        this.queryParams = res?.user
+        if(this.queryParams){
+          localStorage.setItem('userName',this.queryParams)
+          this.travelService.updateSelectedOption({isUserSaved:true})
+        }
+      }
+    })
+  }
 
   ngOnInit() {
     this.getNewDestination();
     this.fetchScoreFromLocaStoreage()
     let userName = localStorage.getItem('userName')
-    if(userName){
+    if(userName?.length || this.queryParams){
       this.isUserOnBorded = true
     }
   }
@@ -83,11 +98,10 @@ export class GameComponent implements OnInit {
       correct: localStorage.getItem('correct'),
       inCorrect: localStorage.getItem('inCorrect')
     }
-    console.log(this.gameScore);
   }
 
+  //Saving the user in localstorage 
   onSubmitUserName(){
-    console.log(this.userName);
     localStorage.setItem('userName',this.userName)
     this.isUserOnBorded = true
     this.travelService.updateSelectedOption({isUserSaved:true})
@@ -98,12 +112,25 @@ export class GameComponent implements OnInit {
   finishGame(){
     this.closeGame = true
     this.totalScore = Number(this.gameScore?.correct) + Number(this.gameScore?.inCorrect)
+    let userToSave = {
+      user_name: localStorage.getItem('userName'),
+      correct_answer: this.correctCount, 
+      incorrect_answer: this.inCorrectCount
+    }
+    this.travelService.createUserWithScore(userToSave).subscribe({
+      next:() => {
+        // TODO: any actions successfull  user save
+      },
+      error: (error) =>{
+        console.log(error)
+      }
+    })
   }
 
+  // Restarting game with new user
   restartGame(){
     localStorage.clear()
     window.location.reload()
   }
-
 
 }

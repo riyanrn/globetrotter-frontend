@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TravelService {
 
-  private apiUrl = 'http://localhost:8000/globetrotter'; // Backend API URL
+  private apiUrl = environment.apiUrl // Backend API URL 
 
   constructor(private http: HttpClient) {}
 
@@ -17,6 +18,16 @@ export class TravelService {
 
   checkCorrectAnswer(body: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/check/answer`, body)
+  }
+
+  // Create user in DB
+  createUserWithScore(body:any){
+    return this.http.post(`${this.apiUrl}/scoring/save/user/score`,body)
+  }
+
+  // Get single user details by user name 
+  getOneUserName(userName:any){
+    return this.http.get(`${this.apiUrl}/scoring/get/user/score?user_name=${userName}`)
   }
 
   // Shared service
