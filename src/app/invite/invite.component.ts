@@ -23,16 +23,13 @@ export class InviteComponent implements OnInit {
       next:(res:any) => {
         if(res && res?.getUserDetails){
           this.getUserDetailsByName()
-          this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.userDetails?.correct_answer}/${this.userDetails?.correct_answer + this.userDetails?.incorrect_answer
-          } ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
         }
       }
     })
   }
 
   ngOnInit(): void {
-    // this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.userDetails?.correct_answer}/${this.userDetails?.correct_answer + this.userDetails?.incorrect_answer
-    // } ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
+    
   }
 
   // On inviting friend save that user in db as well

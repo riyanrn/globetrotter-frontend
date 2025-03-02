@@ -38,6 +38,7 @@ export class HeaderComponent implements OnInit {
   switchUser(){
     localStorage.clear()
     window.location.reload()
+    window.open('/','_self')
   }
 
   inviteUser(){
