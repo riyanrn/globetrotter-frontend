@@ -1,15 +1,27 @@
 <div class="invite-container">
     <div class="card">
-        <div>
-            <h2>Enter Your Friend Name</h2>
-            <input type="text" [(ngModel)]="userName" class="invite-form">
-            <h2>Contact</h2>
-            <input type="number" [(ngModel)]="contactNumber" class="invite-form">
-            <h2>Message</h2>
-            <textarea type="text-area" [(ngModel)]="message" class="invite-form"></textarea>
-        </div>
-        <div class="button-wrapper">
-            <button class="submit-btn" (click)="onSubmitInviteForm()">Invite</button>
-        </div>
+      <h2 class="title">📩 Invite Your Friend</h2>
+  
+      <div class="form-group">
+        <label for="userName">👤 Friend's Name</label>
+        <input type="text" id="userName" [(ngModel)]="userName" class="invite-input" placeholder="Enter your friend's name">
+      </div>
+  
+      <div class="form-group">
+        <label for="contactNumber">📞 Contact</label>
+        <span style="font-size: 12px;">Enter contact number with country code</span>
+        <input type="tel" id="contactNumber" [(ngModel)]="contactNumber" class="invite-input" placeholder="+91XXXXXXXXXX">
+      </div>
+  
+      <div class="form-group">
+        <label for="message">💬 Message</label>
+        <textarea id="message" [(ngModel)]="message" class="invite-textarea"
+          placeholder="Type a custom message or use the default invite..."></textarea>
+      </div>
+  
+      <div class="button-wrapper">
+        <button class="submit-btn" (click)="onSubmitInviteForm()">🚀 Send Invite</button>
+      </div>
     </div>
-</div>
+  </div>
+  

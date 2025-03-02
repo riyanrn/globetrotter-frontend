@@ -18,16 +18,25 @@ export class InviteComponent implements OnInit {
   appUrl:any
   whatsAppInviteUrl:any
 
-  constructor(private travelService: TravelService) { }
+  constructor(private travelService: TravelService) { 
+    travelService.fetchUserDetailsByName.subscribe({
+      next:(res:any) => {
+        if(res && res?.getUserDetails){
+          this.getUserDetailsByName()
+          this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.userDetails?.correct_answer}/${this.userDetails?.correct_answer + this.userDetails?.incorrect_answer
+          } ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
-    this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.totalScore} ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
+    // this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.userDetails?.correct_answer}/${this.userDetails?.correct_answer + this.userDetails?.incorrect_answer
+    // } ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
   }
 
   // On inviting friend save that user in db as well
   onSubmitInviteForm(){
-    this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.totalScore} ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
-
     // Whatsapp invite link
     this.whatsAppInviteUrl =`https://wa.me/${this.contactNumber}?text=${encodeURIComponent(this.message)}`
 
@@ -51,4 +60,22 @@ export class InviteComponent implements OnInit {
       }
     })
   } 
+
+  //Get user detials by user name
+  userDetails:any
+  getUserDetailsByName(){
+    let user = localStorage.getItem('userName')
+    this.travelService.getOneUserName(user).subscribe({
+      next:(res:any) => {
+        this.userDetails = {
+          correct_answer:res?.result?.correct_answer,
+          total_questions: Number(res?.result?.correct_answer) + Number(res?.result?.incorrect_answer)
+        }
+        this.message = `🎉 I just played this awesome travel puzzle game! 🌍 I scored ${this.userDetails?.correct_answer} / ${this.userDetails?.total_questions} ✅ Think you can beat my score? Try it now! 🔥 Play here: ${this.angularAppUrl}?user=${this.userName}`;
+      },
+      error: (error) => {
+
+      }
+    })
+  }
 }

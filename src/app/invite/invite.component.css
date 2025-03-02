@@ -1,62 +1,73 @@
-.invite-container {
+ .invite-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: #f8f9fa;
   }
   
-  /* Card Styling */
   .card {
-    background: #fff;
+    background: white;
     padding: 25px;
-    width: 800px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
     text-align: center;
   }
-
   
-.invite-form {
-    flex: 1;
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #ddd;
-    border-radius: 6px;
-    outline: none;
-    transition: border 0.3s;
+  .title {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: bold;
   }
   
-  .invite-form:focus {
-    border-color: #4caf50;
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
   }
-
-  textarea {
-    width: 50%;
+  
+  .form-group label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .invite-input,
+  .invite-textarea {
+    width: 100%;
     padding: 10px;
-    font-size: 16px;
-    height: 100px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    resize: none; /* Stops resizing if needed */
+    font-size: 16px;
   }
-
+  
+  .invite-textarea {
+    min-height: 80px;
+    resize: none;
+  }
+  
+  .button-wrapper {
+    margin-top: 15px;
+  }
+  
   .submit-btn {
-    background: #4caf50;
-    text-align: center;
-    color: #fff;
+    background: #28a745;
+    color: white;
     border: none;
-    padding: 15px;
-    font-size: 18px;
-    border-radius: 6px;
-    float: right !important;
+    padding: 12px 18px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
   
   .submit-btn:hover {
-    background: #45a049;
+    background: #218838;
   }
-
-  .button-wrapper{
-    padding: 15px 35px ;
-  }
+  

@@ -42,6 +42,11 @@ export class HeaderComponent implements OnInit {
 
   inviteUser(){
     this.router.navigate(['/invite'])
+    this.travelService.getEventToCallUserDetailsAPI({getUserDetails:true})
+  }
+
+  onClickRedirectToHome(){
+    this.router.navigate(['/'])
   }
 
 }

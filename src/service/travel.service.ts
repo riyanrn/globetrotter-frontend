@@ -37,4 +37,12 @@ export class TravelService {
   updateSelectedOption(option: any) {
     this.saveUserInLocalStorage.next(option);
   }
+
+  // Get user details on click of send invite to get user details
+  private getUserDetails = new BehaviorSubject<null>(null)
+  fetchUserDetailsByName = this.getUserDetails.asObservable();
+
+  getEventToCallUserDetailsAPI(event:any){
+    this.getUserDetails.next(event)
+  }
 }
